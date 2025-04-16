@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "LiftControlSystem": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
