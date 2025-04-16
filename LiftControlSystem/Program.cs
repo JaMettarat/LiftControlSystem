@@ -27,32 +27,10 @@ liftControlSystem.AddLifts(new List<Lift>
 });
 #endregion
 
-#region Add Subclass ServiceLift
-liftControlSystem.AddLift(new ServiceLift(7, "A", "Service1", "Low", Enumerable.Range(1, 10).ToList(), 1000, 1));
-var requestServiceLift = new Request
-{
-    RequestedFloor = 8,
-    Direction = Direction.Up,
-    Weight = 1002
-};
-liftControlSystem.CallingLift(requestServiceLift);
-#endregion
-
-
-#region Add Special ServiceLift
-liftControlSystem.AddLift(new ServiceLift(7, "A", "Service1", "Low", Enumerable.Range(1, 10).ToList(), 1000, 1));
-var requestSpecialLift = new Request
-{
-    RequestedFloor = 8,
-    Direction = Direction.Up,
-    Weight = 59
-};
-liftControlSystem.CallingLift(requestSpecialLift);
-#endregion
-
-
 #region Calling lift name "A1" go to mantainance
+Console.WriteLine($"Lift A1 go to maintenance");
 liftControlSystem.Lifts.FirstOrDefault(l => l.Name == "A1")?.GoToMaintenance();
+Console.WriteLine();
 #endregion
 
 
@@ -61,9 +39,10 @@ var request1 = new Request
 {
     RequestedFloor = 8,
     Direction = Direction.Up,
-    Weight = 180    
+    Weight = 180
 };
 liftControlSystem.CallingLift(request1);
+Console.WriteLine();
 #endregion
 
 
@@ -76,6 +55,7 @@ var request2 = new Request
     Unit = WeightUnit.lb
 };
 liftControlSystem.CallingLift(request2);
+Console.WriteLine();
 #endregion
 
 
@@ -87,9 +67,38 @@ lift1.IsAvailable();
 #endregion
 
 #region 3.3. Enable LCS to count the total number of lifts in the system. 
-liftControlSystem.GetTotalLiftCount();
+int totalLifts = liftControlSystem.GetTotalLiftCount();
+Console.WriteLine($"Total Lifts in the system: {totalLifts}");
+Console.WriteLine();
 #endregion
 
+
+#region Add Subclass ServiceLift
+var serviceLiftControlSystem = new LCS();
+serviceLiftControlSystem.AddLift(new SepacialLift(1, "A", "service1", "Low", Enumerable.Range(1, 10).ToList(), 1000, 1));
+var requestServiceLift = new Request
+{
+    RequestedFloor = 5,
+    Direction = Direction.Up,
+    Weight = 900
+};
+serviceLiftControlSystem.CallingLift(requestServiceLift);
+Console.WriteLine();
+#endregion
+
+
+#region Add Subclass SpecialLift
+var specialLiftControlSystem = new LCS();
+specialLiftControlSystem.AddLift(new ServiceLift(1, "A", "specail1", "Low", Enumerable.Range(1, 10).ToList(), 1000, 1));
+var requestSpecialLift = new Request
+{
+    RequestedFloor = 9,
+    Direction = Direction.Up,
+    Weight = 1020
+};
+specialLiftControlSystem.CallingLift(requestSpecialLift);
+Console.WriteLine();
+#endregion
 
 
 

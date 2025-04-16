@@ -15,6 +15,6 @@
                 Console.WriteLine($"Sepacial Lift {LiftId} moving to floor {floor}");
             else
                 Console.WriteLine($"Sepacial Lift {LiftId} cannot go to floor {floor}");
-        }
+        }        
     }
 }

@@ -18,5 +18,13 @@ namespace LiftControlSystem.DerivedClass
 
             return weightKg > (MaxWeightKg * 102 / 100);
         }
+
+        public override void GoTo(int floor)
+        {
+            if (ServiceFloors.Contains(floor))
+                Console.WriteLine($"Service Lift {LiftId} moving to floor {floor}");
+            else
+                Console.WriteLine($"Service Lift {LiftId} cannot go to floor {floor}");
+        }
     }
 }
